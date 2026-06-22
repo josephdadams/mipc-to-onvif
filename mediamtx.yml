@@ -1,0 +1,26 @@
+# mediamtx configuration for mipc-to-onvif
+# Paths are managed dynamically by the proxy via the API.
+
+logLevel: info
+logDestinations: [stdout]
+
+# Allow any credentials (or none) for API, publishing, and reading.
+# This is safe on a local network — mediamtx ports are not exposed externally.
+authMethod: internal
+authInternalUsers:
+  - user: any
+    permissions:
+      - action: api
+      - action: read
+      - action: publish
+
+# API must be enabled so the proxy can register/update RTSP paths at runtime
+api: yes
+apiAddress: :9997
+
+# RTSP server (plain, no TLS)
+rtspAddress: :8554
+
+# Accept publish/read on any path name (required for FFmpeg relay)
+paths:
+  all_others:

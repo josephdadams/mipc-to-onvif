@@ -1,0 +1,23 @@
+# mipc-to-onvif configuration
+# Copy this file to config.yml and fill in your details,
+# OR leave mipc section empty and use the web UI to configure.
+
+mipc:
+  username: ""   # Email or phone used to log in to the MIPC app
+  password: ""
+
+proxy:
+  # IP address of the machine running Docker — your NVR must reach this IP.
+  host_ip: 192.168.1.100
+
+  # Web UI port.
+  web_port: 8080
+
+  # First camera uses this port for ONVIF; each additional camera increments by 1.
+  onvif_base_port: 8081
+
+  # Port mediamtx listens on for RTSP (must match docker-compose mapping).
+  rtsp_port: 8554
+
+  # Internal mediamtx API URL (change only if running mediamtx separately).
+  mediamtx_api: http://mediamtx:9997
